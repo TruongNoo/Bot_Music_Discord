@@ -215,4 +215,4 @@ async def commands_command(ctx):
 
 
 # Kết nối bot với Discord
-bot.run('MTEwNzM2NDIwODc3OTIxMDc3Mg.GWVBJD.SygtSZCcQ-b_F1laeuEONQOO1AXEQ_We-JLnME')
+bot.run('')
