@@ -85,6 +85,7 @@ async def add_playlist_to_queue(ctx, url):
 
 async def play_song(ctx):
     global is_playing
+    global save_queue
 
     if len(queue) == 0 and ctx.voice_client:
         await ctx.send('Danh sách phát nhạc đã hết. Bạn hãy nhanh tay sử dụng !play để thêm nhạc vào danh sách và cùng thưởng thức với tôi nào!')
@@ -132,13 +133,13 @@ async def repeat(ctx, mode=None):
     global repeat_queue
     if mode == '1':
         if len(queue) == 0:
-            queue.append(queue.pop())
+            queue.append(save_queue[0])
         repeat_mode = True
         repeat_queue = False
         await ctx.send('Chế độ lặp phát 1 bài hát đã được bật!')
     elif mode == 'all':
         if len(queue) == 0:
-            queue.append(queue.pop())
+            queue.append(save_queue[0])
         repeat_mode = False
         repeat_queue = True
         await ctx.send('Chế độ lặp phát danh sách đã được bật!')
@@ -195,7 +196,7 @@ async def leave(ctx):
 @bot.command(name="Help", aliases=["h"], help="Dùng để hiển thị tất cả các lệnh của bot")
 async def commands_command(ctx):
     command_prefix = bot.command_prefix
-    embed = discord.Embed(title="Lệnh của bot và cách sử dụng", description="Dưới đây là danh sách các lệnh có sẵn:", color = discord.Color.blue())
+    embed = discord.Embed(title="Cei Music xin chào mọi người!", description="Dưới đây là danh sách các lệnh có sẵn:", color = discord.Color.blue())
 
     for command in bot.commands:
         if command.hidden:
